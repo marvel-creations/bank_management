@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+</head>
+<body>
+    <form id="detailForm"></form>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name"/>
+    <br><br>
+    <label for="password">Enter the Password</label>
+    <input type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+    <br><br>
+    <label for="accnumber">Account Number</label>
+    <input type="number" id="accnumber" name="accnumber" required pattern=".{10}">
+    <br><br>
+    
+    <button type="button"  onclick="login()" id="login">Submit</button>
+
+<script>
+    // registration.js
+function generateAccountNumber() {
+  return Math.floor(Math.random() * 1000000)+1;
+}
+const accountNumber = generateAccountNumber();
+document.getElementById('accnumber').value = accountNumber;
+
+function login() {
+  const name = document.getElementById('name').value;
+  const password = document.getElementById('password').value;
+
+  // Save to session storage
+  sessionStorage.setItem('name', name);
+  sessionStorage.setItem('password', password);
+  sessionStorage.setItem('accnumber', accountNumber);
+
+  // Redirect to login page
+  window.location.href = 'login.html';
+}
+
+// Set account number in the input field
+
+</script>
+</body>
+</html>

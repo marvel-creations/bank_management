@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+</head>
+<body>
+    <form id="detailForm">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required/>
+    <br><br>
+    <label for="password">Enter the Password</label>
+    <input type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+    <br><br>
+    <label for="accnumber">Account Number</label>
+    <input type="number" id="accnumber" name="accnumber" required pattern=".{10}">
+    <br><br>
+    
+    <button type="button" id="login">Submit</button>
+</form>
+
+<script>
+    function generateAccountNumber() {
+        return Math.floor(Math.random() * 100000000)+100000000;
+        }
+    const accountNumber = generateAccountNumber();
+    document.getElementById('accnumber').value = accountNumber;
+
+
+    document.getElementById('login').addEventListener('click', function() {
+    var form = document.getElementById('detailForm');
+    
+    if(form.checkValidity())
+        {
+        // registration.js
+        
+        
+
+        const name = document.getElementById('name').value;
+        const password = document.getElementById('password').value;
+
+        // Save to session storage
+        sessionStorage.setItem('name', name);
+        sessionStorage.setItem('password', password);
+        sessionStorage.setItem('accnumber', accountNumber);
+
+        // Redirect to login page
+        window.location.href = 'login.html';}
+else{
+
+    form.reportValidity();
+}});
+// Set account number in the input field
+
+</script>
+</body>
+</html>

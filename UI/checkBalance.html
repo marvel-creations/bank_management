@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Balance</title>
+</head>
+<body>
+    <h1>Balance Details</h1>
+    <p id="accountId"></p>
+    <p id="balance"></p>
+    <button type="button" id="exit">Ok</button>
+
+<script>
+    document.getElementById("accountId").innerText="Account Number : "+ sessionStorage.getItem('accnumber');
+    document.getElementById("balance").innerText="Current Balance :  "+sessionStorage.getItem('balance');
+    document.getElementById("exit").addEventListener('click',function(){
+        window.location.href='menu.html';
+    })
+</script>
+</body>
+</html>

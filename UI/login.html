@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div id="loginBox" style="display: block;">
+    <fieldset>
+        <legend>Login</legend>
+        <form id="loginForm">
+            <label for="laccnumber">Account Number</label>
+            <input type="text" id="laccnumber" name="laccnumber" required><br/>
+<br>    
+            <label for="lpassword">Enter Password</label>
+            <input type="password" id="lpassword" name="lpassword" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"><br/>
+<br>
+            <button type="button"  id="loginButton">Login</button><br/>
+<br>
+            <a href="register.html" style="color: rgba(49, 1, 96, 0.663); text-decoration: underline;">Don't have an account? Register</a>
+
+        </form>
+    </fieldset>
+</div>
+
+<div id="successLogin" style="display: none;">
+    <h1 style="color:green">Successfully Login</h1>
+    <p id="successtext"></p>
+    <button type="button" onclick="ok()" >Okay</button><br/>
+</div>
+
+
+<script>
+    document.getElementById('laccnumber').value = sessionStorage.getItem('accnumber');
+    document.getElementById("loginButton").addEventListener('click',function(){
+    var form=document.getElementById("loginForm");
+    if(form.checkValidity()){
+        const storedAccountNumber = sessionStorage.getItem('accnumber');
+        const storedPassword = sessionStorage.getItem('password');
+        const inputAccountNumber = document.getElementById('laccnumber').value;
+        const inputPassword = document.getElementById('lpassword').value;
+
+        if (inputAccountNumber === storedAccountNumber && inputPassword === storedPassword) {
+            // Redirect to menu page
+            var hide=document.getElementById("loginBox");
+            var show=document.getElementById("successLogin");
+            hide.style.display='none';
+            document.getElementById("successtext").innerText="Customer Account Id : "+ inputAccountNumber;
+            show.style.display='block';
+            // window.location.href = 'menu.html';
+        } else {
+            alert('Invalid credentials');
+        }
+    }
+    else{
+        form.reportValidity();
+    }
+});
+// Set account number in the input field
+
+function ok(){
+    window.location.href = 'menu.html';
+}
+
+
+</script>
+</body>
+</html>

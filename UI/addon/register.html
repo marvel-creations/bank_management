@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <script>
+        function register() {
+            let fullName = document.getElementById('fullName').value;
+            let password = document.getElementById('password').value;
+            let ssnId = document.getElementById('ssnId').value;
+
+            if (fullName && password && ssnId) {
+                let accountNumber = 'ACC' + Math.floor(Math.random() * 1000000);
+
+                let user = {
+                    fullName: fullName,
+                    password: password,
+                    ssnId: ssnId,
+                    accountNumber: accountNumber,
+                    balance: 0
+                };
+
+                let users = JSON.parse(localStorage.getItem('users')) || [];
+                users.push(user);
+                localStorage.setItem('users', JSON.stringify(users));
+
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                window.location.href = 'login.html';
+            } else {
+                alert('Please fill all fields.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Register</h2>
+    <form onsubmit="register(); return false;">
+        <label for="fullName">Full Name:</label><br>
+        <input type="text" id="fullName"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password"><br>
+        <label for="ssnId">SSN ID:</label><br>
+        <input type="text" id="ssnId"><br><br>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

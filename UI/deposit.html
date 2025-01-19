@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Amount</title>
+</head>
+<body>
+    <div id="container" style="display: block;">
+    <fieldset>
+        <legend>Deposit</legend>
+        <p id="accId"></p><br>
+        <form id="DepositForm">
+            <label for="amount">Enter Deposit amount</label>
+            <input type="number" name="amount" id="amount" required min="0">
+            <button type="button" id="deposit">Deposit</button>
+
+        </form>
+    </fieldset>
+</div>
+<div id="success" style="display: none;">
+    <h1 style="color:green">Successfully Deposited</h1>
+    <p id="successtext"></p>
+    <p id="balanceText"></p>
+    <button type="button" id="exit" >Okay</button><br/>
+</div>
+
+<script>
+    let accid=sessionStorage.getItem('accnumber');
+    document.getElementById('accId').innerText="Customer Account Id : "+accid ;
+    document.getElementById('deposit').addEventListener('click',function(){
+        var form=document.getElementById("DepositForm")
+        let amountEntered=parseInt(document.getElementById('amount').value);
+        var amount=parseInt(sessionStorage.getItem('balance'));
+    if(form.checkValidity())
+    {
+    if(amountEntered<500){
+        alert("Minimum Deposit of 500/- is required!!");
+        amountEntered.value=0;
+    }
+    else{
+        // console.log("Hello "+accid);
+        console.log(amount)
+        amount=amount+amountEntered;
+        console.log(typeof amount);
+        console.log(amount);
+
+        sessionStorage.setItem('balance',amount);
+        document.getElementById('container').style.display='none';
+        document.getElementById("successtext").innerText="Customer Account Id : "+ sessionStorage.getItem("accnumber");
+        document.getElementById("balanceText").innerText="Updated Balance: "+ amount;
+        
+        document.getElementById('success').style.display='block';
+
+    }
+    }
+    else{
+        form.reportValidity();
+    }
+});
+document.getElementById("exit").addEventListener('click',function(){
+    window.location.href='menu.html';
+})
+ 
+
+</script>
+</body>
+</html>

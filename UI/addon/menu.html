@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <script>
+        function checkLogin() {
+            let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function deposit() {
+            let amount = parseFloat(prompt('Enter amount to deposit:'));
+            if (!isNaN(amount) && amount > 0) {
+                let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                currentUser.balance += amount;
+
+                updateUser(currentUser);
+                alert('Deposit successful. New balance: ' + currentUser.balance);
+            } else {
+                alert('Invalid amount.');
+            }   
+        }
+
+        function withdraw() {
+            let amount = parseFloat(prompt('Enter amount to withdraw:'));
+            if (!isNaN(amount) && amount > 0) {
+                let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                if (currentUser.balance >= amount) {
+                    currentUser.balance -= amount;
+
+                    updateUser(currentUser);
+                    alert('Withdrawal successful. New balance: ' + currentUser.balance);
+                } else {
+                    alert('Insufficient balance.');
+                }
+            } else {
+                alert('Invalid amount.');
+            }
+        }
+
+        function checkBalance() {
+            let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            alert('Current balance: ' + currentUser.balance);
+        }
+
+        function updateUser(updatedUser) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            let userIndex = users.findIndex(user => user.accountNumber === updatedUser.accountNumber);
+            if (userIndex !== -1) {
+                users[userIndex] = updatedUser;
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+            }
+        }
+
+        window.onload = checkLogin;
+    </script>
+</head>
+<body>
+    <h2>Menu</h2>
+    <button onclick="deposit()">Deposit Amount</button><br>
+    <button onclick="withdraw()">Withdraw Amount</button><br>
+    <button onclick="checkBalance()">Check Balance</button>
+</body>
+</html>

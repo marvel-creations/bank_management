@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <fieldset>
+    <legend>Menu</legend>
+    <button id="updateButton">Update</button>
+    <button id="deposit">Deposit</button>
+    <button id="withdraw">Withdraw</button>
+    <button id="checkBalance">Check Balance</button>
+   </fieldset>
+<script>
+    // const storedAccountNumber = sessionStorage.getItem('accnumber');
+    let balance=0;
+    sessionStorage.setItem('balance', balance);
+    document.getElementById("updateButton").addEventListener('click',function(){
+        window.location.href="update.html";
+
+    });
+    document.getElementById("deposit").addEventListener('click',function(){
+        window.location.href="deposit.html";
+    });
+    document.getElementById("withdraw").addEventListener('click',function(){
+        window.location.href="withdraw.html";
+    });
+    document.getElementById("checkBalance").addEventListener('click',function(){
+        window.location.href="checkBalance.html";
+    });
+</script>
+    
+</body>
+</html>

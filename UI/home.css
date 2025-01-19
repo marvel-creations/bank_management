@@ -1,0 +1,104 @@
+/* .flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    }
+.flex-container >img{
+    justify-content: right;    
+}
+#flex-button{
+    justify-content: left   ;
+} */
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.flex-container {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+.home-icon > h1{
+    width: 55 px;
+    height: 55px;
+}
+.home-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Optional: to add some space between the right items */
+    margin-right: auto;
+}
+
+.home-button {
+    display: flex;
+    padding: 10px;
+    gap: 15px;
+}
+.h-button>button{
+    padding: 5px;
+    width: 70px;
+}
+.banner{
+    margin-top: 25px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.banner-text{
+    margin-top: 25px;
+}
+.banner-text > h1{
+    padding-bottom: 30px;
+}
+#banner-img{
+    display: block;
+    width: auto;
+    margin-right: 70px;
+}
+.options{
+    padding-inline: 85px;
+    margin-top: 25px;
+    display: flex;
+    gap:55px;
+    justify-content: space-evenly;
+}
+.options-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: aquamarine;
+    width: 50%;
+    height: auto;
+    margin-bottom: 15px;
+}
+.options-item >img{
+   padding:15px;
+}
+.options-item >button{
+    margin-bottom: 15px;
+}
+.footer{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(0, 170, 0);
+    width: 100%;
+    padding: 10px
+
+}
+.footer >div > p{
+   text-align: center;
+   padding: -5px;
+   margin: 1px;
+}
